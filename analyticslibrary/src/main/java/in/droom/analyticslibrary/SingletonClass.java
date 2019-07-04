@@ -27,18 +27,13 @@ public class SingletonClass  {
         return ourInstance;
     }
 
-//    public static SingletonClass getInstance(){
-//        if(ourInstance==null){
-//            ourInstance=new SingletonClass();
-//        }
-//
-//        if(helper==null){
-//
-//            helper= SQLiteDatabase.openDatabase("/data/data/in.droom.newapplication/databases/MyDatabase", null, OPEN_READWRITE);
-//        }
-//
-//        return ourInstance;
-//    }
+    public static SingletonClass getInstance(){
+        if(ourInstance==null){
+            ourInstance=new SingletonClass();
+        }
+
+        return ourInstance;
+    }
 
     public static void InsertData(String eventname, String eventtype, String timestamp, String addinfo){
         DatabaseMethods insertobj=new DatabaseMethods();
@@ -55,6 +50,11 @@ public class SingletonClass  {
     public static void PushData(){
         DatabaseMethods pushobj=new DatabaseMethods();
         pushobj.PushData();
+    }
+
+    public static void UpdateData(int id, String eventname, String eventtype, String timestamp, String addinfo){
+        DatabaseMethods updobj=new DatabaseMethods();
+        updobj.UpdateData(id, eventname, eventtype, timestamp, addinfo);
     }
 
 }

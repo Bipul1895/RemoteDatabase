@@ -72,14 +72,17 @@ public class DatabaseMethods {
 //        return str.toString();
 //    }
 //
-//    public int UpdateData(String oldName, String newName){
-//        SQLiteDatabase db=helper.getWritableDatabase();
-//        ContentValues values=new ContentValues();
-//        values.put(helper.NAME,newName);
-//        String[] whereArgs={oldName};
-//        int count=db.update(helper.TABLE_NAME,values,helper.NAME+"=?",whereArgs);
-//        return count;
-//    }
+    public int UpdateData(int id, String eventname, String eventtype, String timestamp, String addinfo){
+        SQLiteDatabase db=helper.getWritableDatabase();
+        ContentValues values=new ContentValues();
+        values.put(CreateDatabase.getEventname(), eventname);
+        values.put(CreateDatabase.getEventtype(), eventtype);
+        values.put(CreateDatabase.getTimestamp(), timestamp);
+        values.put(CreateDatabase.getAddinfo(), addinfo);
+        values.put(CreateDatabase.getFLAG(),1);
+        int count=db.update(CreateDatabase.getTableName(),values,CreateDatabase.getUID()+"="+id,null);
+        return count;
+    }
 //
 //    public int DeleteData(){
 //        SQLiteDatabase db=helper.getWritableDatabase();

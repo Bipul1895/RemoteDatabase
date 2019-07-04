@@ -24,6 +24,8 @@ public class BackgroundTask extends AsyncTask<String,Void,Void> {
         String push_url="http://172.20.4.222/webapp/droom.php";
         Log.d("BackgroundTask : ","Async task called");
 
+        SingletonClass obj;
+
         JSONObject parent=new JSONObject();
 
         JSONArray jsonArray=new JSONArray();
@@ -56,6 +58,9 @@ public class BackgroundTask extends AsyncTask<String,Void,Void> {
                 e.printStackTrace();
             }
 
+            obj=SingletonClass.getInstance();
+
+            obj.UpdateData(id, eventname, eventtype, timestamp, addinfo);
 
 //            str.append("\nID : "+id+ "\nEventName : " + eventname+"\nEventType : "+ eventtype+ "\nTimeStamp : "+timestamp+"\nAdditionalInfo : "+addinfo+"\n");
         }
