@@ -52,9 +52,9 @@ public class SingletonClass  {
         pushobj.PushData();
     }
 
-    public static void UpdateData(int id, String eventname, String eventtype, String timestamp, String addinfo){
+    public static void UpdateData(int id){
         DatabaseMethods updobj=new DatabaseMethods();
-        updobj.UpdateData(id, eventname, eventtype, timestamp, addinfo);
+        updobj.UpdateData(id);
     }
 
     public static void DeleteData(){

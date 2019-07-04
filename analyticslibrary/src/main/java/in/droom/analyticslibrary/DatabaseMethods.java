@@ -72,14 +72,28 @@ public class DatabaseMethods {
 //        return str.toString();
 //    }
 //
-    public int UpdateData(int id, String eventname, String eventtype, String timestamp, String addinfo){
+    public int UpdateData(int id){
         SQLiteDatabase db=helper.getWritableDatabase();
         ContentValues values=new ContentValues();
-        values.put(CreateDatabase.getEventname(), eventname);
-        values.put(CreateDatabase.getEventtype(), eventtype);
-        values.put(CreateDatabase.getTimestamp(), timestamp);
-        values.put(CreateDatabase.getAddinfo(), addinfo);
-        values.put(CreateDatabase.getFLAG(),1);
+        Cursor cursor=db.query(CreateDatabase.getTableName(),null,CreateDatabase.getUID()+"="+id,null,null,null,null);
+//        values.put(CreateDatabase.getEventname(), eventname);
+//        values.put(CreateDatabase.getEventtype(), eventtype);
+//        values.put(CreateDatabase.getTimestamp(), timestamp);
+//        values.put(CreateDatabase.getAddinfo(), addinfo);
+        while (cursor.moveToNext()) {
+            String eventname = cursor.getString(1);
+            String eventtype = cursor.getString(2);
+            String timestamp = cursor.getString(3);
+            String addinfo = cursor.getString(4);
+
+            values.put(CreateDatabase.getEventname(), eventname);
+            values.put(CreateDatabase.getEventtype(), eventtype);
+            values.put(CreateDatabase.getTimestamp(), timestamp);
+            values.put(CreateDatabase.getAddinfo(), addinfo);
+            values.put(CreateDatabase.getFLAG(),1);
+
+        }
+
         int count=db.update(CreateDatabase.getTableName(),values,CreateDatabase.getUID()+"="+id,null);
         return count;
     }

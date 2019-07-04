@@ -13,18 +13,21 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 
 import static in.droom.analyticslibrary.SingletonClass.helper;
 
 
 public class BackgroundTask extends AsyncTask<String,Void,Void> {
-
+    SingletonClass obj;
+    String eventname,eventtype,timestamp,addinfo;
+    int id,syncflag;
     @Override
     protected Void doInBackground(String... strings) {
         String push_url="http://172.20.4.222/webapp/droom.php";
         Log.d("BackgroundTask : ","Async task called");
 
-        SingletonClass obj;
+
 
         JSONObject parent=new JSONObject();
 
@@ -35,12 +38,13 @@ public class BackgroundTask extends AsyncTask<String,Void,Void> {
         Cursor cursor=db.query(CreateDatabase.getTableName(),null,CreateDatabase.getFLAG()+"= '"+ value +"'" ,null,null,null,null);
         while(cursor.moveToNext()){
             JSONObject jsonObject=new JSONObject();
-            int id=cursor.getInt(0);
-            String eventname=cursor.getString(1);
-            String eventtype=cursor.getString(2);
-            String timestamp= cursor.getString(3);
-            String addinfo=cursor.getString(4);
-            int syncflag=cursor.getInt(5);
+
+            id=cursor.getInt(0);
+            eventname=cursor.getString(1);
+            eventtype=cursor.getString(2);
+            timestamp= cursor.getString(3);
+            addinfo=cursor.getString(4);
+            syncflag=cursor.getInt(5);
 
             try {
                 jsonObject.put("Id", id);
@@ -60,7 +64,7 @@ public class BackgroundTask extends AsyncTask<String,Void,Void> {
 
             obj=SingletonClass.getInstance();
 
-            obj.UpdateData(id, eventname, eventtype, timestamp, addinfo);
+
 
 //            str.append("\nID : "+id+ "\nEventName : " + eventname+"\nEventType : "+ eventtype+ "\nTimeStamp : "+timestamp+"\nAdditionalInfo : "+addinfo+"\n");
         }
@@ -104,9 +108,24 @@ public class BackgroundTask extends AsyncTask<String,Void,Void> {
             bufferedReader.close();
             inputStream.close();
 
-            System.out.println(">>>> : "+response);
-            System.out.println("::::");
+            Log.d("BAckground Task : ", ">>>> : "+response);
 
+            JSONArray jArray = new JSONArray(response);
+
+            ArrayList<Integer> User_List = new ArrayList<Integer>();
+
+            for (int i = 0; i < jArray.length(); i++)
+            {
+                int json_data = jArray.getInt(i);
+                User_List.add(json_data);
+            }
+
+            System.out.println(">>>>" + User_List.size());
+
+            for(int i=0;i<User_List.size();i++){
+                System.out.println(">>>> : " + User_List.get(i));
+                obj.UpdateData(User_List.get(i));
+            }
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -114,8 +133,9 @@ public class BackgroundTask extends AsyncTask<String,Void,Void> {
         } catch (IOException e) {
             e.printStackTrace();
             Log.d("Back", "Error 2");
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
-
 
 
         return null;
