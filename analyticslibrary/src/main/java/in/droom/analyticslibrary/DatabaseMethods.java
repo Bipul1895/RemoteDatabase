@@ -84,10 +84,10 @@ public class DatabaseMethods {
         return count;
     }
 //
-//    public int DeleteData(){
-//        SQLiteDatabase db=helper.getWritableDatabase();
-//        int num=db.delete(helper.TABLE_NAME,null,null);
-//        return num;
-//    }
+    public int DeleteData(){
+        SQLiteDatabase db=helper.getWritableDatabase();
+        int num=db.delete(CreateDatabase.getTableName(),null,null);
+        return num;
+    }
 
 }

@@ -44,6 +44,14 @@
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/del_button"
+            android:layout_margin="10dp"
+            android:text="Delete"
+    />
+
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/btn_push_to_server"
             android:layout_marginTop="30dp"
             android:layout_marginLeft="10dp"

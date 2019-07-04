@@ -57,5 +57,10 @@ public class SingletonClass  {
         updobj.UpdateData(id, eventname, eventtype, timestamp, addinfo);
     }
 
+    public static void DeleteData(){
+        DatabaseMethods delobj=new DatabaseMethods();
+        delobj.DeleteData();
+    }
+
 }
 

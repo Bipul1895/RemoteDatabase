@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     Button btn3;
     Button btn4;
     Button btn5;
+    Button delbutton;
     SingletonClass obj;
     private final String CHANNEL_ID = "personal_notification";
     private static final int NOTIFICATION_ID = 1;
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         btn3=findViewById(R.id.button3);
         btn4=findViewById(R.id.button4);
         btn5=findViewById(R.id.btn_push_to_server);
+        delbutton=findViewById(R.id.del_button);
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,6 +91,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 obj.PushData();
+            }
+        });
+
+        delbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                obj.DeleteData();
             }
         });
 
