@@ -36,7 +36,8 @@ public class MarkAsRead extends BroadcastReceiver {
 
         SingletonClass.InsertData("Mark As Read", "Action Button", time, "mark as read clicked");
 
-        
+        NotificationManager notificationManager= (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.cancel(MainActivity.NOTIFICATION_ID );
     }
 
 
