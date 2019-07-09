@@ -33,7 +33,8 @@ public class NoActivity extends AppCompatActivity {
 
         SingletonClass.InsertData("No","ActionButton" ,time ,"Notification Actions" );
 
-
+        NotificationManager notificationManager= (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        notificationManager.cancel(MainActivity.NOTIFICATION_ID );
 
     }
 }

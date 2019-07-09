@@ -36,6 +36,7 @@ public class MarkAsRead extends BroadcastReceiver {
 
         SingletonClass.InsertData("Mark As Read", "Action Button", time, "mark as read clicked");
 
+        
     }
 
 

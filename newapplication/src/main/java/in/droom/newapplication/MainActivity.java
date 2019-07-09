@@ -28,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
     Button btn5;
     Button delbutton;
     SingletonClass obj;
-    private final String CHANNEL_ID = "personal_notification";
-    private static final int NOTIFICATION_ID = 1;
+    public final String CHANNEL_ID = "personal_notification";
+    public static final int NOTIFICATION_ID = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

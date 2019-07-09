@@ -37,5 +37,8 @@ public class YesActivity extends AppCompatActivity {
 
         //notificationManager.cancel(MainActivity.NOTIFICATION_ID);
 
+        NotificationManager notificationManager= (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        notificationManager.cancel(MainActivity.NOTIFICATION_ID );
+
     }
 }
