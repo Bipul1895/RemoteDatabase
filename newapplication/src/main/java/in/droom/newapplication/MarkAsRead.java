@@ -32,7 +32,7 @@ public class MarkAsRead extends BroadcastReceiver {
 
         SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
         final String time=format.format(calendar.getTime());
-        
+
 
         SingletonClass.InsertData("Mark As Read", "Action Button", time, "mark as read clicked");
 

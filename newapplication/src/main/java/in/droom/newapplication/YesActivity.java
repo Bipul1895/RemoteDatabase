@@ -21,6 +21,9 @@ public class YesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_yes);
 
+        getSupportActionBar().setTitle("Yes Activity");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         Toast.makeText(this, "Yes Activity is active!", Toast.LENGTH_LONG).show();
 
         TimeZone tz=TimeZone.getTimeZone("Asia/Calcutta");

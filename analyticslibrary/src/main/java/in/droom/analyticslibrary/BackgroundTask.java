@@ -24,7 +24,7 @@ public class BackgroundTask extends AsyncTask<String,Void,Void> {
     int id,syncflag;
     @Override
     protected Void doInBackground(String... strings) {
-        String push_url="http://172.20.4.222/webapp/droom.php";
+        String push_url="http://172.20.4.108/webapp/droom.php";
         Log.d("BackgroundTask : ","Async task called");
 
 

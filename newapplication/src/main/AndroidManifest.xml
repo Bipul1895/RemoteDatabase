@@ -11,9 +11,11 @@
             android:theme="@style/AppTheme">
         <activity android:name=".LandingActivity">
         </activity>
-        <activity android:name=".NoActivity">
+        <activity android:name=".NoActivity"
+        android:parentActivityName=".MainActivity">
         </activity>
-        <activity android:name=".YesActivity">
+        <activity android:name=".YesActivity"
+        android:parentActivityName=".MainActivity">
         </activity>
         <activity android:name=".MainActivity">
             <intent-filter>

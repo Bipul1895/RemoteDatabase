@@ -19,6 +19,9 @@ public class NoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_no);
 
+        getSupportActionBar().setTitle("No Activity");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         Toast.makeText(this, "No Activity is active!", Toast.LENGTH_LONG).show();
 
         TimeZone tz=TimeZone.getTimeZone("Asia/Calcutta");
