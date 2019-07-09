@@ -3,7 +3,11 @@ package in.droom.analyticslibrary;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Handler;
 import android.util.Log;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 import static android.database.sqlite.SQLiteDatabase.OPEN_READWRITE;
 import static in.droom.analyticslibrary.SingletonClass.helper;
@@ -45,10 +49,34 @@ public class DatabaseMethods {
 
     public void PushData(){
 
-        BackgroundTask backgroundTask=new BackgroundTask();
-        backgroundTask.execute();
+        callAsynchronousTask();
 
     }
+
+    public void callAsynchronousTask() {
+        final Handler handler = new Handler();
+        Timer timer = new Timer();
+        TimerTask doAsynchronousTask = new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(new Runnable() {
+                    public void run() {
+                        try {
+                            BackgroundTask performBackgroundTask = new BackgroundTask();
+                            // PerformBackgroundTask this class is the class that extends AsynchTask
+                            performBackgroundTask.execute();
+                        } catch (Exception e) {
+                            // TODO Auto-generated catch block
+                            System.out.println("Error " + e.getMessage());
+                        }
+                    }
+                });
+            }
+        };
+        timer.schedule(doAsynchronousTask, 0, 20000); //execute in every 5000 ms
+    }
+
+
 
 //    public String ShowMeData(String name){
 //        StringBuffer str=new StringBuffer();
@@ -103,5 +131,7 @@ public class DatabaseMethods {
         int num=db.delete(CreateDatabase.getTableName(),null,null);
         return num;
     }
+
+
 
 }
