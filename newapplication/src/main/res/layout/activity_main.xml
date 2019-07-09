@@ -13,7 +13,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/button1"
             android:layout_margin="10dp"
-            android:text="submit"
+            android:text="Submit"
     />
 
     <Button
@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/button3"
             android:layout_margin="10dp"
-            android:text="deliver"
+            android:text="Deliver"
     />
 
 
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/button2"
             android:layout_margin="10dp"
-            android:text="receive"
+            android:text="Receive"
     />
 
     <Button
@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/button4"
             android:layout_margin="10dp"
-            android:text="show notification"
+            android:text="Show notification"
     />
 
     <Button

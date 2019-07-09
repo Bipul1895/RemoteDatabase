@@ -28,7 +28,8 @@ public class MarkAsRead extends BroadcastReceiver {
 
         TimeZone tz=TimeZone.getTimeZone("Asia/Calcutta");
         Calendar calendar=Calendar.getInstance(tz);
-//                final String date= DateFormat.getDateInstance().format(calendar.getTime());
+
+        SingletonClass.getInstance();
 
         SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
         final String time=format.format(calendar.getTime());

@@ -27,8 +27,6 @@ public class BackgroundTask extends AsyncTask<String,Void,Void> {
         String push_url="http://172.20.4.108/webapp/droom.php";
         Log.d("BackgroundTask : ","Async task called");
 
-
-
         JSONObject parent=new JSONObject();
 
         JSONArray jsonArray=new JSONArray();

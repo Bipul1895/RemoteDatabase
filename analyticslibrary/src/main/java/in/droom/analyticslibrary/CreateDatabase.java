@@ -22,8 +22,6 @@ public class CreateDatabase extends SQLiteOpenHelper{
 
     public CreateDatabase(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        //this.context=context;
-        //Message.message(context, "ConstructorCalled");
     }
 
     public static String getUID() {
@@ -58,9 +56,8 @@ public class CreateDatabase extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
         try {
             db.execSQL(CREATE_TABLE);
-            //Message.message(context, "OnCreateCalled");
         } catch (SQLException e) {
-            // Message.message(context, "" + e);
+            System.out.println("Error " + e.getMessage());
         }
     }
 
@@ -69,9 +66,8 @@ public class CreateDatabase extends SQLiteOpenHelper{
         try {
             db.execSQL(DROP_TABLE);
             onCreate(db);
-            // Message.message(context, "OnUpgradeCalled");
         } catch (SQLException e) {
-            // Message.message(context, "" + e);
+            System.out.println("Error " + e.getMessage());
         }
     }
 

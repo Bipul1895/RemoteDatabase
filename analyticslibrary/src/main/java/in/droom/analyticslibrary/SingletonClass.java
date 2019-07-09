@@ -1,10 +1,7 @@
 package in.droom.analyticslibrary;
 
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-
-import static android.database.sqlite.SQLiteDatabase.OPEN_READWRITE;
-
+import android.util.Log;
 
 public class SingletonClass  {
 
@@ -15,25 +12,19 @@ public class SingletonClass  {
 
     static CreateDatabase helper;
 
-    public static SingletonClass getInstance(Context context){
+    public static SingletonClass getInstance(){
+
+        return ourInstance;
+    }
+
+    public static synchronized void initialize(Context context){
         if(ourInstance==null){
             ourInstance=new SingletonClass();
-        }
-        if(helper==null){
-
             helper= new CreateDatabase(context);
         }
 
-        return ourInstance;
     }
 
-    public static SingletonClass getInstance(){
-        if(ourInstance==null){
-            ourInstance=new SingletonClass();
-        }
-
-        return ourInstance;
-    }
 
     public static void InsertData(String eventname, String eventtype, String timestamp, String addinfo){
         DatabaseMethods insertobj=new DatabaseMethods();

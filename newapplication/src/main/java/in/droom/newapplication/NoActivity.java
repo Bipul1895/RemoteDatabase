@@ -22,11 +22,12 @@ public class NoActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("No Activity");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        SingletonClass.getInstance();
+
         Toast.makeText(this, "No Activity is active!", Toast.LENGTH_LONG).show();
 
         TimeZone tz=TimeZone.getTimeZone("Asia/Calcutta");
         Calendar calendar=Calendar.getInstance(tz);
-//                final String date= DateFormat.getDateInstance().format(calendar.getTime());
 
         SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
         final String time=format.format(calendar.getTime());
