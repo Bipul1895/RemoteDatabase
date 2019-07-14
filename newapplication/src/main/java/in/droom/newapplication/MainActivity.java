@@ -107,6 +107,8 @@ public class MainActivity extends AppCompatActivity {
                 Intent markIntent = new Intent(getApplicationContext(), MarkAsRead.class);
                 PendingIntent pendingIntentMark = PendingIntent.getBroadcast(getApplicationContext(), 0, markIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
+                Intent delIntent = new Intent(getApplicationContext(), DelNotification.class);
+                PendingIntent pendingIntentDel = PendingIntent.getBroadcast(getApplicationContext(), 0, delIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
                 Intent landingIntent=new Intent(getApplicationContext(),LandingActivity.class);
                 landingIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -123,12 +125,13 @@ public class MainActivity extends AppCompatActivity {
 
                 NotificationCompat.Builder builder=new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID);
                 builder.setSmallIcon(R.drawable.ic_assignment_returned_black_24dp);
-                builder.setContentTitle("Simple Notification");
-                builder.setContentText("This is a simple notification");
+                builder.setContentTitle("Droom Notification");
+                builder.setContentText("This is a droom notification");
                 builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
                 //builder.setAutoCancel(true);
                 builder.setContentIntent(landingPendingIntent);
-                builder.setOngoing(true);
+                builder.setDeleteIntent(pendingIntentDel);
+                //builder.setOngoing(true);
 
                 builder.addAction(R.drawable.ic_assignment_returned_black_24dp, "Yes", yesPendingIntent);
                 builder.addAction(R.drawable.ic_assignment_returned_black_24dp, "No", noPendingIntent);

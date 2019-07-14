@@ -16,6 +16,8 @@ public class LandingActivity extends AppCompatActivity {
 
     //NotificationManager notificationManager= (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
+    SingletonClass obj;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +32,9 @@ public class LandingActivity extends AppCompatActivity {
         SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
         final String time=format.format(calendar.getTime());
 
-        SingletonClass.InsertData("Notification On click","ActionButton" ,time ,"Notification Actions" );
+        obj=SingletonClass.getInstance();
+
+        obj.InsertData("Notification On click","ActionButton" ,time ,"Notification Actions" );
 
         //notificationManager.cancel(MainActivity.NOTIFICATION_ID);
 

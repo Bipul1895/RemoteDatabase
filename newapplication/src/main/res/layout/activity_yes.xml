@@ -11,11 +11,70 @@
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="YES"
+            android:text="Droom"
             android:textSize="50dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="20dp"
+            android:textColor="#0000ff"
 
     />
+
+    <Button
+            android:id="@+id/btn_buy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Buy Car"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+
+    />
+
+
+    <Button
+            android:id="@+id/btn_sell"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sell Car"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+
+    />
+
+    <Button
+            android:id="@+id/btn_addcart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add to cart"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+    />
+
+    <Button
+            android:id="@+id/btn_yes_show"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            android:text="Show Database"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+    />
+
+    <Button
+            android:id="@+id/btn_push"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:text="Push To Server"
+    />
+
+    <Button
+            android:id="@+id/del_synced_yes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Delete Synced Data"
+            android:layout_marginTop="10dp"
+    />
+
 
 </LinearLayout>

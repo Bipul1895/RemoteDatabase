@@ -14,6 +14,8 @@ import java.util.TimeZone;
 
 public class NoActivity extends AppCompatActivity {
 
+    SingletonClass obj;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,8 +23,6 @@ public class NoActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle("No Activity");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        SingletonClass.getInstance();
 
         Toast.makeText(this, "No Activity is active!", Toast.LENGTH_LONG).show();
 
@@ -32,7 +32,8 @@ public class NoActivity extends AppCompatActivity {
         SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
         final String time=format.format(calendar.getTime());
 
-        SingletonClass.InsertData("No","ActionButton" ,time ,"Notification Actions" );
+        obj=SingletonClass.getInstance();
+        obj.InsertData("No","ActionButton" ,time ,"Notification Actions" );
 
         NotificationManager notificationManager= (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         notificationManager.cancel(MainActivity.NOTIFICATION_ID );

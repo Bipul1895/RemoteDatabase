@@ -19,12 +19,12 @@ import static in.droom.analyticslibrary.SingletonClass.helper;
 
 
 public class BackgroundTask extends AsyncTask<String,Void,Void> {
-    SingletonClass obj;
+
     String eventname,eventtype,timestamp,addinfo;
     int id,syncflag;
     @Override
     protected Void doInBackground(String... strings) {
-        String push_url="http://172.20.4.108/webapp/droom.php";
+        String push_url="http://192.168.43.150/webapp/droom.php";
         Log.d("BackgroundTask : ","Async task called");
 
         JSONObject parent=new JSONObject();
@@ -60,9 +60,6 @@ public class BackgroundTask extends AsyncTask<String,Void,Void> {
                 e.printStackTrace();
             }
 
-            obj=SingletonClass.getInstance();
-
-
 
 //            str.append("\nID : "+id+ "\nEventName : " + eventname+"\nEventType : "+ eventtype+ "\nTimeStamp : "+timestamp+"\nAdditionalInfo : "+addinfo+"\n");
         }
@@ -71,7 +68,7 @@ public class BackgroundTask extends AsyncTask<String,Void,Void> {
 
             String data=parent.toString();
 
-           // Log.d("BackgroundTask : ", ">>>> : "+data);
+            Log.d("BackgroundTask : ", "JSON data : "+data);
 
             URL url=new URL(push_url);
 
@@ -122,7 +119,7 @@ public class BackgroundTask extends AsyncTask<String,Void,Void> {
 
             for(int i=0;i<User_List.size();i++){
                 System.out.println(">>>> : " + User_List.get(i));
-                obj.UpdateData(User_List.get(i));
+                SingletonClass.UpdateData(User_List.get(i));
             }
 
         } catch (MalformedURLException e) {

@@ -27,6 +27,7 @@
         </activity>
 
         <receiver android:name=".MarkAsRead"/>
+        <receiver android:name=".DelNotification"/>
 
     </application>
 

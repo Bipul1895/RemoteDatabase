@@ -8,11 +8,8 @@ public class MyApplication extends Application {
     public void onCreate(){
         super.onCreate();
         Log.d("MyApplication : ", "Application started!");
-
+        //Provides context to the object of SQLiteOpenHelper class.
         SingletonClass.initialize(this);
 
     }
-
-
-
 }

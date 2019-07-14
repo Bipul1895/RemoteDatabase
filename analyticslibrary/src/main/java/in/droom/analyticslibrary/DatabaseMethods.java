@@ -50,32 +50,33 @@ public class DatabaseMethods {
 
     public void PushData(){
 
-        callAsynchronousTask();
+        BackgroundTask backgroundTask=new BackgroundTask();
+        backgroundTask.execute();
 
     }
 
-    public void callAsynchronousTask() {
-        final Handler handler = new Handler();
-        Timer timer = new Timer();
-        TimerTask doAsynchronousTask = new TimerTask() {
-            @Override
-            public void run() {
-                handler.post(new Runnable() {
-                    public void run() {
-                        try {
-                            BackgroundTask performBackgroundTask = new BackgroundTask();
-                            // PerformBackgroundTask this class is the class that extends AsynchTask
-                            performBackgroundTask.execute();
-                        } catch (Exception e) {
-                            // TODO Auto-generated catch block
-                            System.out.println("Error " + e.getMessage());
-                        }
-                    }
-                });
-            }
-        };
-        timer.schedule(doAsynchronousTask, 0, 20000); //execute in every 5000 ms
-    }
+//    public void callAsynchronousTask() {
+//        final Handler handler = new Handler();
+//        Timer timer = new Timer();
+//        TimerTask doAsynchronousTask = new TimerTask() {
+//            @Override
+//            public void run() {
+//                handler.post(new Runnable() {
+//                    public void run() {
+//                        try {
+//                            BackgroundTask performBackgroundTask = new BackgroundTask();
+//                            // PerformBackgroundTask this class is the class that extends AsynchTask
+//                            performBackgroundTask.execute();
+//                        } catch (Exception e) {
+//                            // TODO Auto-generated catch block
+//                            System.out.println("Error " + e.getMessage());
+//                        }
+//                    }
+//                });
+//            }
+//        };
+//        timer.schedule(doAsynchronousTask, 0, 200000); //execute in every 5000 ms
+//    }
 
 
     public int UpdateData(int id){
@@ -104,6 +105,12 @@ public class DatabaseMethods {
     public int DeleteData(){
         SQLiteDatabase db=helper.getWritableDatabase();
         int num=db.delete(CreateDatabase.getTableName(),null,null);
+        return num;
+    }
+
+    public int DeleteSyncedData(){
+        SQLiteDatabase db=helper.getWritableDatabase();
+        int num=db.delete(CreateDatabase.getTableName(),CreateDatabase.getFLAG()+"="+1,null);
         return num;
     }
 
