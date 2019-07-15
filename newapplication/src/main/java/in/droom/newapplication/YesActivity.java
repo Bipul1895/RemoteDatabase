@@ -30,7 +30,7 @@ public class YesActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Yes Activity");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Toast.makeText(this, "Yes Activity is active!", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Yes Activity is active!", Toast.LENGTH_SHORT).show();
 
         TimeZone tz=TimeZone.getTimeZone("Asia/Calcutta");
         final Calendar calendar=Calendar.getInstance(tz);

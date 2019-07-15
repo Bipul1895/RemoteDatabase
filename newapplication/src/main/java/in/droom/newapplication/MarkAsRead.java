@@ -26,7 +26,7 @@ public class MarkAsRead extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Toast.makeText(context, "Here is broadcast", Toast.LENGTH_LONG).show();
+        //Toast.makeText(context, "Here is broadcast", Toast.LENGTH_LONG).show();
 
         TimeZone tz=TimeZone.getTimeZone("Asia/Calcutta");
         Calendar calendar=Calendar.getInstance(tz);
@@ -36,7 +36,7 @@ public class MarkAsRead extends BroadcastReceiver {
 
         obj=SingletonClass.getInstance();
 
-        obj.InsertData("Mark As Read", "Action Button", time, "mark as read clicked");
+        obj.InsertData("Mark As Read", "Action Button", time, "");
 
         NotificationManager notificationManager= (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.cancel(MainActivity.NOTIFICATION_ID );

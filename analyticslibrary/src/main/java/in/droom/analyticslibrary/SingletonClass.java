@@ -2,6 +2,7 @@ package in.droom.analyticslibrary;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 public class SingletonClass  {
 
@@ -38,9 +39,18 @@ public class SingletonClass  {
     }
 
     public static void PushData(){
-        //Push data to the server
-        DatabaseMethods pushobj=new DatabaseMethods();
-        pushobj.PushData();
+        TrafficAPI trafficAPI=new TrafficAPI();
+        int traffic=trafficAPI.gettraffic();
+
+        //Threshold traffic = 5;
+
+        if(traffic <= 5) {
+            DatabaseMethods pushobj = new DatabaseMethods();
+            pushobj.PushData();
+        }
+        else{
+            Log.d("Singleton Class: ", "traffic : "+traffic);
+        }
     }
 
     public static void UpdateData(int id){

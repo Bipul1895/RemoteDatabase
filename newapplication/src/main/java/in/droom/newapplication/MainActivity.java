@@ -21,9 +21,8 @@ import java.util.TimeZone;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btn1;
+
     Button btn2;
-    Button btn3;
     Button btn4;
     Button btn5;
     Button delbutton;
@@ -38,42 +37,13 @@ public class MainActivity extends AppCompatActivity {
 
         obj=SingletonClass.getInstance();
 
-        btn1=findViewById(R.id.button1);
+
         btn2=findViewById(R.id.button2);
-        btn3=findViewById(R.id.button3);
+
         btn4=findViewById(R.id.button4);
         btn5=findViewById(R.id.btn_push_to_server);
         delbutton=findViewById(R.id.del_button);
 
-        btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String btn_name=btn1.getText().toString();
-                TimeZone tz=TimeZone.getTimeZone("Asia/Calcutta");
-                Calendar calendar=Calendar.getInstance(tz);
-
-                SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
-                final String time=format.format(calendar.getTime());
-
-                obj.InsertData(btn_name,"Button" ,time , "Simple click");
-            }
-        });
-
-        btn3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String btn_name=btn3.getText().toString();
-
-                TimeZone tz=TimeZone.getTimeZone("Asia/Calcutta");
-                Calendar calendar=Calendar.getInstance(tz);
-
-                SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
-                final String time=format.format(calendar.getTime());
-
-                obj.InsertData(btn_name,"Button" ,time , "Simple click");
-
-            }
-        });
 
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         delbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                obj.DeleteData();
+                obj.DeleteSyncedData();
             }
         });
 

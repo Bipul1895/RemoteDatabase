@@ -8,29 +8,13 @@
         android:orientation="vertical"
         tools:context=".MainActivity">
 
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/button1"
-            android:layout_margin="10dp"
-            android:text="Submit"
-    />
-
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/button3"
-            android:layout_margin="10dp"
-            android:text="Deliver"
-    />
-
 
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/button2"
             android:layout_margin="10dp"
-            android:text="Receive"
+            android:text="Show Database"
     />
 
     <Button
@@ -46,7 +30,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/del_button"
             android:layout_margin="10dp"
-            android:text="Delete"
+            android:text="Delete Synced Data"
     />
 
     <Button
