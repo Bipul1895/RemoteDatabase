@@ -4,6 +4,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
+//Used to display database contents
+//Only for debugging purpose
 public class DisplayDatabase extends AppCompatActivity {
     private TextView Txtinfo;
     @Override

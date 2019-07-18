@@ -15,6 +15,16 @@ import static in.droom.analyticslibrary.SingletonClass.helper;
 
 public class DatabaseMethods {
 
+    //This function will insert data into the local database
+
+    /**
+     *
+     * @param eventname - Name of the event, e.g. Name of the action button
+     * @param eventtype - Type of event, e.g. Button
+     * @param timestamp - Time at which the notification action occured
+     * @param addinfo
+     * @return
+     */
     public long InsertData(String eventname, String eventtype, String timestamp, String addinfo) {
 
         SQLiteDatabase db = helper.getWritableDatabase();
@@ -29,6 +39,8 @@ public class DatabaseMethods {
         return id;
     }
 
+
+    //Not required, it was only for demo purpose
     public String ShowData(){
         StringBuffer str=new StringBuffer();
         SQLiteDatabase db = helper.getWritableDatabase();
@@ -44,10 +56,14 @@ public class DatabaseMethods {
             str.append("\nID : "+id+ "\nEventName : " + eventname+"\nEventType : "+ eventtype+ "\nTimeStamp : "+timestamp+"\nAdditionalInfo : "+addinfo+"\nFlag :"+flag+"\n");
         }
 
-
         return str.toString();
     }
 
+    /**
+     * @description This function will be called to push data to server
+     *     This function will call class named "Background Task"
+     *     "Background Task" extends "Async Task"
+     */
     public void PushData(){
 
         BackgroundTask backgroundTask=new BackgroundTask();
@@ -55,30 +71,12 @@ public class DatabaseMethods {
 
     }
 
-//    public void callAsynchronousTask() {
-//        final Handler handler = new Handler();
-//        Timer timer = new Timer();
-//        TimerTask doAsynchronousTask = new TimerTask() {
-//            @Override
-//            public void run() {
-//                handler.post(new Runnable() {
-//                    public void run() {
-//                        try {
-//                            BackgroundTask performBackgroundTask = new BackgroundTask();
-//                            // PerformBackgroundTask this class is the class that extends AsynchTask
-//                            performBackgroundTask.execute();
-//                        } catch (Exception e) {
-//                            // TODO Auto-generated catch block
-//                            System.out.println("Error " + e.getMessage());
-//                        }
-//                    }
-//                });
-//            }
-//        };
-//        timer.schedule(doAsynchronousTask, 0, 200000); //execute in every 5000 ms
-//    }
-
-
+    /**
+     * @description - This function will update sync flag from 0 to 1.
+     *                This will be called for those data which have been synced to the server.
+     * @param id - ID of the table row
+     * @return int -
+     */
     public int UpdateData(int id){
         SQLiteDatabase db=helper.getWritableDatabase();
         ContentValues values=new ContentValues();
@@ -102,12 +100,19 @@ public class DatabaseMethods {
         return count;
     }
 
+    //Not required, To delete all data present in the local database
     public int DeleteData(){
         SQLiteDatabase db=helper.getWritableDatabase();
         int num=db.delete(CreateDatabase.getTableName(),null,null);
         return num;
     }
 
+    /**
+     * To delete those data from local database that have flag (or syncflag) = 1
+     * These are those data which have been synced to the server
+     *
+     * @return number of rows that were deleted
+     */
     public int DeleteSyncedData(){
         SQLiteDatabase db=helper.getWritableDatabase();
         int num=db.delete(CreateDatabase.getTableName(),CreateDatabase.getFLAG()+"="+1,null);

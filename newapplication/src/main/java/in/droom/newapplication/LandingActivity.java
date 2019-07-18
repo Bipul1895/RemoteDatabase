@@ -34,7 +34,7 @@ public class LandingActivity extends AppCompatActivity {
 
         obj=SingletonClass.getInstance();
 
-        obj.InsertData("Notification On click","ActionButton" ,time ,"Notification Actions" );
+        obj.InsertData("Notification Clicked","ActionButton" ,time ,"" );
 
         //notificationManager.cancel(MainActivity.NOTIFICATION_ID);
 

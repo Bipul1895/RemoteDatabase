@@ -24,7 +24,7 @@ public class BackgroundTask extends AsyncTask<String,Void,Void> {
     int id,syncflag;
     @Override
     protected Void doInBackground(String... strings) {
-        String push_url="http://172.20.4.141/webapp/droom.php";
+        String push_url="http://172.20.4.129/webapp/droom.php";
         Log.d("BackgroundTask : ","Async task called");
 
         JSONObject parent=new JSONObject();
@@ -33,6 +33,9 @@ public class BackgroundTask extends AsyncTask<String,Void,Void> {
 
         SQLiteDatabase db = helper.getWritableDatabase();
         int value=0;
+
+        //Select only those data from database which have sync flag = 0
+        //One by one retrieve data from database and put in into a JSONArray named jsonArray
         Cursor cursor=db.query(CreateDatabase.getTableName(),null,CreateDatabase.getFLAG()+"= '"+ value +"'" ,null,null,null,null);
         while(cursor.moveToNext()){
             JSONObject jsonObject=new JSONObject();
@@ -54,15 +57,19 @@ public class BackgroundTask extends AsyncTask<String,Void,Void> {
 
                 jsonArray.put(jsonObject);
 
-                parent.put("data", jsonArray);
-
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
-
-//            str.append("\nID : "+id+ "\nEventName : " + eventname+"\nEventType : "+ eventtype+ "\nTimeStamp : "+timestamp+"\nAdditionalInfo : "+addinfo+"\n");
         }
+
+        //Put jsonArray into parent jsonObject named "parent"
+        try {
+            parent.put("data", jsonArray);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
 
         try {
 
@@ -70,6 +77,8 @@ public class BackgroundTask extends AsyncTask<String,Void,Void> {
 
             Log.d("BackgroundTask : ", "JSON data : "+data);
 
+
+            //Establish connection with server program
             URL url=new URL(push_url);
 
             HttpURLConnection httpURLConnection= (HttpURLConnection) url.openConnection();
@@ -88,6 +97,10 @@ public class BackgroundTask extends AsyncTask<String,Void,Void> {
             bufferedWriter.flush();
             bufferedWriter.close();
             outputStream.close();
+
+            //Receive a JSON array from server program
+            //This json array is an array of ID of those elements which have been synced to the server
+            //The ID of these elements will be used to mark sync flag of these elements as 1
 
             InputStream inputStream=httpURLConnection.getInputStream();
 
@@ -119,6 +132,8 @@ public class BackgroundTask extends AsyncTask<String,Void,Void> {
 
             for(int i=0;i<User_List.size();i++){
                 System.out.println(">>>> : " + User_List.get(i));
+
+                //Update data method of class "Singleton Class" is called to mark sync flag as 1
                 SingletonClass.UpdateData(User_List.get(i));
             }
 

@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
                 NotificationCompat.Builder builder=new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID);
                 builder.setSmallIcon(R.drawable.ic_assignment_returned_black_24dp);
                 builder.setContentTitle("Droom Notification");
-                builder.setContentText("This is a droom notification");
+                builder.setContentText("Did you like our app?");
                 builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
                 //builder.setAutoCancel(true);
                 builder.setContentIntent(landingPendingIntent);
